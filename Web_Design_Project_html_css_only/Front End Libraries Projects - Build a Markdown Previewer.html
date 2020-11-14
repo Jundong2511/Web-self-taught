@@ -1,0 +1,64 @@
+
+<body>
+<div class="center">
+<textarea id="editor"></textarea></div>
+<p id="preview">not workning yet</p>
+  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.2.2/marked.min.js" >
+</script>
+
+<!-- js -->
+const editor = document.getElementById("editor");
+const preview = document.getElementById("preview");
+const editor = document.getElementById("editor");
+const preview = document.getElementById("preview");
+const h1="# this is Header h1 size";
+const h2="## this is sub header h2 size";
+const link="this is a link shows [Game] but link you to Overwatch.com [Game](http://Playoverwatch.com)";
+const inlineCode='```const="ABC"```';
+const codeBlock=`~~~~~~~
+block1 this line is only letters. no ~
+~~~~~~~`;
+const listItem="* listItem";
+const blockquote=`> Jun
+> April`;
+const image="![GitHub Logo](/images/logo.png)";
+const boldedText="**bold text here**";
+
+
+//console.log('outside'+this);
+//documnet.onload()
+document.onload = loadFunction();
+
+function loadFunction () {
+  editor.defaultValue = `${h1}\n\n${h2}\n\n${link}\n\n${inlineCode}\n\n${codeBlock}\n\n${listItem}\n\n${blockquote}\n\n${image}\n\n${boldedText}`;
+  preview.innerHTML = marked(editor.defaultValue);
+  //${codeBlock}\n\n${listItem}\n\n${blockquote}\n\n${image}\n\n${bold}`;
+}
+
+editor.addEventListener('keyup', () => {
+
+  //console.log(typeof(editor.value));
+  //this.mark(editor.value);
+  preview.innerHTML = marked(editor.value);
+
+});
+
+
+<!-- css -->
+.center{
+  display: flex;
+  justify-content: center;
+
+}
+#editor{
+  display:block;
+  min-height: 500px;
+  min-width: 800px;
+}
+p{
+ display:block;
+  background-color:gray;
+     min-height: 500px;
+  min-width: 800px;
+}

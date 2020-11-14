@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Meat or Veg!</title>
+    </head>
+    <body>
+       <h1 id="title">Meat or Veg survey</h1>
+        <p id="description">Do you perfer meat or veg? Let us know!</p>
+      <form id="survey-form">
+        <label id="name-label">
+          <input id="name" type="text" placeholder="name" required> your name</label><br>
+        <label id="email-label">
+          <input id="email" type="email" placeholder="email" required> your email</label><br>
+        <label id="number-label">
+          <input id="number" type="number" min="2" max="10" placeholder="number" required> your number</label><br>
+        <label>Choose your sex</label>
+          <select id="dropdown" type="dropdown" >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="none">Don't ask</option>
+          </select><br>
+        <label>Do you drink?<br>
+        <input type="radio" value="yes" name="drink">Yes</label><br>
+        <input type="radio" value="no" name="drink">No</label><br>
+
+        <label>Choose your food</label><br>
+       <label for="chicken"><input id="chicken" value="chicken" type="checkbox">Chicken</label> <br>
+        <label for="fish"><input id="fish" value="fish" type="checkbox">Fish</label> <br>
+        <label for="veg"><input id="veg" value="veg" type="checkbox">Veg</label> <br>
+        <label for="ice-cream"><input id="ice-cream" value="ice-cream" type="checkbox">Ice Cream</label> <br>
+        <label for="rice"><input id="rice" value="rice" type="checkbox">Rice</label> <br>
+        <label>Not your food? Tell us more!</label><br>
+        <textarea></textarea>
+        <button id= "submit" type="submit" >Submit</button>
+      </form>
+    </body>
+</html>

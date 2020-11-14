@@ -1,0 +1,116 @@
+# Sass use $ to start a variable
+$text-color:red;
+# when call the variable
+<style>
+    .blog-post, h2 {
+        color: $text-color;
+    }
+</style>
+
+------------------
+# use @mixin and @include
+# @mixin is like make a new function, and @include is like call the function
+
+<style type='text/scss'>
+
+  @mixin border-radius($radius){
+    -webkit-border-radius:$radius;
+    -moz-border-radius:$radius;
+    -ms-border-radius:$radius;
+    border-radius:$radius;
+  }
+
+  #awesome {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    @include border-radius(15px);
+  }
+</style>
+
+<div id="awesome"></div>
+
+------------------
+# use @if and @else if and @else
+
+  @mixin border-stroke($val){
+    @if $val == light{
+      border: 1px solid black;
+    }@else if $val == medium {
+      border: 3px solid black;
+    }@else if $val == heavy {
+      border: 6px solid black;
+    }@else {
+      border: none;
+    }
+  }
+
+------------------
+# use @for
+# 1 @for start to end means end count, like [0:]
+# 2 @for start through end, end doesn't count, like [0:-1]
+
+<style type='text/scss'>
+@for $j from 1 to 6{
+    .text-#{$j} {font-size: 15px * $j;}
+}
+</style>
+
+<p class="text-1">Hello</p>
+<p class="text-2">Hello</p>
+<p class="text-3">Hello</p>
+<p class="text-4">Hello</p>
+<p class="text-5">Hello</p>
+
+
+------------------
+# use @each to map item in a list
+<style type='text/scss'>
+
+
+$dict: (key1: blue, key2: black, key3: red);
+@each $key, $value in $dict {
+  .#{$value}-bg {
+    background-color: $value;
+  }
+}
+
+or same as
+
+@each $color in blue, black, red{
+    .#{$color}-bg {background-color: $color;}
+}
+
+  div {
+    height: 200px;
+    width: 200px;
+  }
+</style>
+
+<div class="blue-bg"></div>
+<div class="black-bg"></div>
+<div class="red-bg"></div>
+
+
+
+------------------
+
+# use @while
+<style type='text/scss'>
+$x: 1;
+@while $x < 6{
+    .text-#{$x}{font-size: 15px * $x;}
+    $x: $x + 1;
+}
+</style>
+
+
+# import mixins from other scss file, e.g import _variables.scss into main.scss file
+@import 'variables'
+
+
+# use @extend to inherit from another css style
+.class-name{
+    @extend .other-class-name;
+    extra css here;
+}

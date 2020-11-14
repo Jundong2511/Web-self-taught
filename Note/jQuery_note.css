@@ -1,0 +1,51 @@
+# script tag and document ready
+<script>
+ $(document).ready(function() {
+
+ });
+</script>
+# with document ready function, code will run after the html rendered, otherwise it may cause bugs
+
+
+# target elements with selector
+<script>
+  $(document).ready(function() {
+$("button").addClass("animated bounce");
+$(".well").addClass("animated shake
+$("#target3").addClass("animated fadeOut");
+or
+$("button").addClass("animated");
+$(".btn").addClass("shake");
+$("#target1").addClass("btn-primary");
+$("button").removeClass("btn-default");
+$("#target1").css("color","red");
+$("#target1").prop("disabled",true);
+$("#target3").text("newText");
+$("#target4").html("<em>newText</em>");
+$("#target4").remove();
+$("#target2").appendTo("#right-well");
+$("#target5").clone().appendto("#left-well");
+$("#target1").parent().css("background-color","red");
+$("#right-well").children().css("color","orange");
+$(".target:nth-child(2)").addClass("animated bounce);
+$(".target:even").addClass("animated bounce");
+$(".target:odd").addClass("animated bounce");
+$("body").addClass("animated hinge");
+  });
+</script>
+# this will add a class called "animated bounce" from jQuery lab to button make all button jump one time
+# same as CSS declarations, use . means select a class
+# same as CSS declarations, use # means select a id
+# remove a class bt using removeClass() function
+# change CSS of an element by using css() function
+# adjust the properties if elements by using prop() function, after an element been disable, it will become gray-out and can no longer be clicked
+# html() function will rewrite the tag and text
+# text() function will rewrite the text
+# remove() function will remove the select elements
+# appendTo() function wil select elements and append them to another element
+# clone() function that make a copy of an element then you can move to where you want to move
+# parent() function will select the element's parent element
+# children() function will select all the child elements of the select element
+# select specific order child element use $(".anyClassHere:nth-child(anyNumberHere)")
+# select all odd or even elements in a class use $(".anyClassHere:even/odd")
+# select entire body element us $("body")

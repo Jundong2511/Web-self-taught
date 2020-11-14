@@ -1,0 +1,28 @@
+style{
+    #quote-box{
+  text-align: center
+}
+}
+
+<div id="quote-box">quote-box
+<p id="text"></p>
+<p id="author"></p>
+<button id="new-quote" onClick="change()">new-quote</button>
+<a id="tweet-quote"href="http://www.twitter.com/intent/tweet">tweet!<a>
+</div>
+  <script type="text/javascript">
+
+    const textArr=[     "Sleep or study, that's a question",    "Ice cream or rib-eye, that's a question",      "World of warcraft or Overwatch, that's a question","BBQ or beer,that's a question"                  ]
+    const authorArr=["April","Jun","Sam","Henry"]
+
+function change(){
+const number=Math.floor(Math.random()*4)
+document.getElementById('text').innerHTML=textArr[number];
+ document.getElementById('author').innerHTML=authorArr[number];
+};
+window.onload=change()
+
+    </script>
+
+
+<!-- https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-random-quote-machine -->

@@ -1,0 +1,101 @@
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<div id="body">
+
+<div id="calculator">
+<div id="ac-show">
+  <button id="clear">AC</button>
+  <div id="display">0</div>
+  </div>
+  <div id=buttons>
+<button class="number" onClick=(handelClick(7)) id="seven">7</button>
+  <button class="number" onClick=(handelClick(8)) id="eight">8</button>
+  <button  class="number" onClick=(handelClick(9)) id="nine">9</button>
+  <button class="operators-buttons" id="add">+</button>
+  <button  class="number"onClick=(handelClick(4)) id="four">4</button>
+  <button class="number"  onClick=(handelClick(5)) id="five">5</button>
+  <button  class="number" onClick=(handelClick(6)) id="six">6</button>
+  <button class="operators-buttons" id="subtract">-</button>
+  <button class="number" onClick=(handelClick(1)) id="one">1</button>
+  <button  class="number" onClick=(handelClick(2)) id="two">2</button>
+  <button  class="number" onClick=(handelClick(3)) id="three">3</button>
+  <button class="operators-buttons" id="multiply">x</button>
+  <button  class="number" onClick=(handelClick(0)) id="zero">0</button>
+
+  <button  class="number" id="decimal">.</button>
+   <button class="operators-buttons" id="equals">=</button>
+  <button class="operators-buttons" id="divide">&#xF7</button>
+    </div>
+  </div>
+
+  </div>
+
+
+  <!-- css -->
+  #body{
+  background-color: #ff704d;
+}
+#buttons{
+  margin-top:10px;
+  display:grid;
+  justify-content: center;
+
+  grid-gap: 10px;
+  grid-template-columns:100px 100px 100px 100px;
+}
+#ac-show{
+  margin-top:10px;
+  display:grid;
+  justify-content: center;
+
+  grid-gap: 10px;
+  grid-template-columns:100px 320px;
+}
+.operators-buttons{
+  font-size: 90px;
+  background-color:  #6699ff;
+  display: block;
+  height: 100px;
+  width: 100px;
+  text-align:center;
+
+}
+
+.number{
+  font-size: 90px;
+  display: block;
+  height: 100px;
+  width: 100px;
+  text-align:center;
+
+ }
+#display{
+  display: block;
+  background-color: yellow;
+  height: 100px;
+  width: 320px;
+  text-align:right;
+  font-size: 90px;
+}
+#clear{
+  font-size: 30px;
+  display: block;
+  height: 100px;
+  width: 100px;
+  text-align:center;
+  padding: 1.5em;
+}
+
+
+<!-- js -->
+
+function handelClick(x){
+  // get display, append number to it, if the first number is zero, remove it
+  const display=document.getElementById("display");
+  console.log(display)
+  if (9>=x>=1){
+    display.innerHTML += x;
+  }
+  if (display.innerHTML[0] == 0){
+    display.innerHTML = display.slice(1:display.length);
+  }
+}

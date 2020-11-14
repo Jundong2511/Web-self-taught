@@ -1,0 +1,92 @@
+# add a bootstrap into html
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+
+
+# center the text just add "text-center" to tag's class
+<h2 class="red-text text-center">CatPhotoApp</h2>
+
+
+# create a bootstrap button with text "Like"
+<button class="btn btn-default">Like</button>
+
+
+# create a long block button, just add btn-block into button class
+<button class="btn btn-default btn-block">Like</button>
+
+
+# change the button color by change btn-default to btn-primary.
+# this will change botton color to main color you'll use in your app
+<button class="btn btn-primary btn-block">Like</button>
+
+
+# call out optional actions with btn-info
+# just add btn-info into btn class
+<button class="btn btn-block btn-info">Info</button>
+
+
+# btn-danger
+<button class="btn btn-block btn-danger">Delete</button>
+
+
+# use bootstrap grid to put elements side by side
+# put all the elements that you wanna put side by side into one div class="row"
+# warp each element with div class="col-xs-4" col:column, xs:extra small, like a cell phone size 4
+# screen has 12 columns total, 12 means one line on the screen
+# 4 means 1/3 of the screen, same time can put other two 4 or one 8
+# 1 means has twelve 1 on the same row
+# total number equal or less than 12 can show up in same row
+
+
+<div class="row">
+    <div class="col-xs-4">
+  <button class="btn btn-block btn-primary">Like</button>
+  </div>
+  <div class="col-xs-4">
+  <button class="btn btn-block btn-info">Info</button>
+  </div>
+  <div class="col-xs-4">
+  <button class="btn btn-block btn-danger">Delete</button>
+  </div>
+  </div>
+
+
+
+ # use a span to target inline elements
+ # nest any element with <span>, then give it a class to change the text's style
+ <p>Top 3 things cats <span class="text-danger">hate:</span></p>
+
+
+
+ # put a picture and title into same line use <div class="row">
+ <div class="row">
+    <div class="col-xs-8">
+  <h2 class="text-primary text-center">CatPhotoApp</h2>
+</div>
+<div class="col-xs-4">
+  <a href="#"><img class="img-responsive thick-green-border" src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back."></a>
+</div>
+</div>
+
+
+
+# add Font Awesome Icons to web
+# add <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> on top
+
+
+# add a info i icon with <i class="fas fa-info-circle"></i>info or <span>
+# add a thumb-up icon with <i class="fas fa-thumbs-up"></i>like or <span>
+# trash can icon <i class="fas fa-trash"></i>delete</i>
+
+
+
+# add a send like paper plane into submit button
+ <button type="submit"><i class="fa fa-paper-plane"></i>Submit</button>
+
+# All textual <input>, <textarea>, and <select> elements with the class .form-control have a width of 100%.
+
+
+# Wells class, create a gray frame background
+<div class="well"> </div>
+
+# button class "btn btn-default"  and jQuery selector class"target"
+ <button class="btn btn-default target"></button>
