@@ -162,6 +162,29 @@ const yScale = d3.scaleLinear()
     .domain([0, d3.max([dataset, d => d[1]])]) // y domain is [0, biggest one on d[1] which is 411] means 0 is at bottom at padding postion, y30, top one the 411 at top at padding position at y470
     .range([h - padding, padding]); // y range, higher number at [0] lower number at [1] to make sure right-side-up
 const output = yScale(411); // returns 30
-d3.select("body")
-    .append("h2")
-    .text(output)
+const svg = d3.select("body")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h);
+svg.selectAll("circle")
+    .data(dataset)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xScale(d[0]))
+    .attr("cy", d => yScale(d[1]))
+    .attr("r", 5)
+svg.selectAll("text")
+    .data(dataset)
+    .enter()
+    .append("text")
+    .text((d) => (d[0] + ", " + d[1]))
+    .attr("x", d => xScale(d[0] + 10))
+    .attr("y", d => yScale(d[1]))
+const xAxis = d3.axisBottom(xScale); // make a maximum number for xAxis with xScale   
+const yAxis = d3.axisLeft(yScale); // make a maximum number for yAxis with yScale
+svg.append("g")
+    .attr("transform", "translate(0," + (h - padding) + ")") // draw X axis
+    .call(xAxis);
+svg.append("g")
+    .attr("transform", "translate(" + padding + ",0)") // draw Y axis, make sure bigger numberfirst make right-side-up
+    .call(yAxis)
