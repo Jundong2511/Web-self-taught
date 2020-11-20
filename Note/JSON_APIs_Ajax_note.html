@@ -1,7 +1,77 @@
 <script>
+    const data = [{ "id": 0, "imageLink": "https://s3.amazonaws.com/freecodecamp/funny-cat.jpg", "altText": "A white cat wearing a green, helmet shaped melon on its head. ", "codeNames": ["Juggernaut", "Mrs. Wallace", "Buttercup"] }, { "id": 1, "imageLink": "https://s3.amazonaws.com/freecodecamp/grumpy-cat.jpg", "altText": "A white cat with blue eyes, looking very grumpy. ", "codeNames": ["Oscar", "Scrooge", "Tyrion"] }, { "id": 2, "imageLink": "https://s3.amazonaws.com/freecodecamp/mischievous-cat.jpg", "altText": "A ginger cat with one eye closed and mouth in a grin-like expression. Looking very mischievous. ", "codeNames": ["The Doctor", "Loki", "Joker"] }];
+
+    // this listener will call function when web loaded
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("getMessage").onClick = function () {
+            // about textContent see https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent
             document.getElementsByClassName("message")[0].textContent = "Here is the message"
+
+            // get external data use XMLHttpRequest()
+            //  get json file from fcc cat photo api
+            const req = new XMLHttpRequest();
+            req.open("GET", '/json/cats.json', true); // build a get request to json/cats.jason, true make it an asynchronous request
+            req.send(); // send the request
+            req.onload = function () { // handle the return data
+                const json = JSON.parse(req.responseText); // parse return data into json file
+                // use forEach() to convert JSON data to HTML
+                let html = "";
+                // for each obj in arr, add a class, bold the key and add <br> to it
+                json = json.filter(function (val) { return (val.id !== 1); }); // filter out if val.id!==1
+                //or same as  
+                //json = json.filter(val => val.id !== 1);
+
+                json.forEach(function (obj) {
+                    const keys = Object.keys(obj); // get keys from obj
+                    html += "<div class='cat'"; // add class
+                    keys.forEach(function (key) { html += "<strong>" + key + "</strong>" + obj[key] + "<br>" }) // bold keys
+                    html += "<img src='" + obj.imageLink + "' alt='" + obj.altText + "'>" // add img to html
+                    html += "</div><br>"
+                    document.getElementsByClassName('message')[0].innerHTML = JSON.stringify(json);//  JSON.stringify convert json file into string, and insert into innerHTML
+                })
+
+                // get external data use fetch()
+                fetch('/json/cats.json') // make a get request, and return a promise
+                    .then(response => response.json()) // if the request is successful, then method is executed, it take response convert to json format and return another promise
+                    .then(data => { // handle second promise
+                        document.getElementById('message').innerHTML = JSON.stringify(data)// insert data into innerHTML
+                        console.log(data[2].codeNames[1]) // output Loki
+                    })
+            }
         }
+        // post data with XMLHttpRequest 
+        const userName = document.getElementById('name').value;
+        const url = 'https://jsonplaceholder.typicode.com/posts';
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', url, true); // POST means we wanna send data, true to make it asynchronous
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8') // set value of an HTTP request header, which contain information about the sender and request, must called after open() and before send()
+        xhr.onreadystatechange = function () { // handle a change in the state of the request
+            if (xhr.readyState === 4 && xhr.status === 201) {  // readyState === 4 means the operation is complete, status === 201 means it was a successful request, the document's HTML can be updated.
+                const serverResponse = JSON.parse(xhr.response);
+                document.getElementsByClassName('message')[0].textContent = serverResponse.userName + serverResponse.suffix
+            }
+        }
+        const body = JSON.stringify({ userName: userName, suffix: ' loves cats!' })
+        xhr.send(body);
+        // console.log output 
+        // body is {"userName":"","suffix":" loves cats!"}
+        // serverResponse.username is undefined
+        // serverResponse.suffix is  loves cats!
+        // xhr.response is {
+        //   "userName": "",
+        //   "suffix": " loves cats!",
+        //   "id": 101}
+
+
+
     })
+
+
+    // get user's current location, and inset into innerHTML
+    if (navigator.geolocation) { // if user allow navifator.geolocation 
+        navigator.geolocation.getCurrentPosition(position => {
+            document.getelementById('data').innerHTML =
+                "latitude: " + posision.coords.latitude + " <br> longitude: " + position.coords.longtitude
+        })
+    }
 </script>
