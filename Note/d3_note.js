@@ -59,7 +59,7 @@ svg.selectAll("rect")
     .attr("fill", "navy")// change the shape color 
     .attr("class", "bar") // add a bar class to rect, then at css style part, use .bar:hover{fill:brown} to change bar's color when hover 
     .append("title")// add title element to the bars
-    .text(d => d); // title's text is elements in dataset, when hover on bar, show text
+    .text(d => d); // title's text is elements in dataset, when hover on bar, show text called "tooltip"
 svg.selectAll("text") // add text on top of the bars
     .data(dataset)
     .enter()
@@ -183,8 +183,8 @@ svg.selectAll("text")
 const xAxis = d3.axisBottom(xScale); // make a maximum number for xAxis with xScale   
 const yAxis = d3.axisLeft(yScale); // make a maximum number for yAxis with yScale
 svg.append("g")
-    .attr("transform", "translate(0," + (h - padding) + ")") // draw X axis
-    .call(xAxis);
+    .attr("transform", "translate(0," + (h - padding) + ")") // locate x-axis's coordinate(horizontal:0,vertical:h-padding)
+    .call(xAxis);// draw X axis
 svg.append("g")
-    .attr("transform", "translate(" + padding + ",0)") // draw Y axis, make sure bigger numberfirst make right-side-up
-    .call(yAxis)
+    .attr("transform", "translate(" + padding + ",0)") // locate y-axis's coordinate(horizontal:padding,vertical:0),make sure bigger numberfirst make right-side-up 
+    .call(yAxis)// draw Y axis

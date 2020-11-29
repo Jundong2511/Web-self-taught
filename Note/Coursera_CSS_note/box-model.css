@@ -1,0 +1,62 @@
+/* *{
+    display:box;
+    margin:0;
+    padding:0;
+} */
+.half {
+    display: inline-block;
+    width: 45%;
+    float:left;
+    margin-right: 2%
+}
+.whole{
+    clear:both;
+}
+
+header {
+    background-color: #666666;
+    text-align: center;
+    padding-bottom: 15px;
+}
+header, footer{
+    background: linear-gradient(#666666 0%, #00b700 100%);
+}
+
+h1 {
+    color: #ffffff
+}
+
+nav a{
+    display:inline-block;
+    background-color:white;
+    width:22%;
+}
+body {
+    margin: 4%;
+}
+
+img {
+    width: 75px;
+}
+
+footer {
+    clear: both;
+   
+}
+/* a{
+    link: a normal, unvisited link
+        visited: has been visited
+        hover: mouse on 
+        focus: activated with the keyboard like tab button
+        active: is being clicked 
+} */
+
+/*  use operator to find attributes values
+    just like RE
+    ^ : match beginning
+        a[href^='http://umich']
+    $ : match the end
+        img[src$='.png']
+    * : wildcard find anywhere match
+        a[href*='umichi']
+*/
